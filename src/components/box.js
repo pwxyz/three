@@ -45,7 +45,22 @@ class Box extends React.Component {
     renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
 
     document.getElementById('box').appendChild(renderer.domElement)  //插入cavans元素 
-    renderer.render(sence, camera)
+    // renderer.render(sence, camera)
+    let t0 = new Date()
+    const renderCa = () => {
+      let t1 = new Date()
+      let t = t1 - t0
+      t0 = t1
+      requestAnimationFrame(renderCa)
+      renderer.render(sence, camera)
+      mesh.rotateY(0.001 * t)
+    }
+    renderCa()
+    // setInterval(renderCa, 20)
+  }
+
+  renderCa = () => {
+
   }
 
   render() {
